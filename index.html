@@ -99,26 +99,27 @@
     <div class="key white">C5</div>
   </div>
 
-  <script>
-    const secretButton = document.getElementById("secretButton");
-    let extrasMode = false;
+<script>
+  const secretButton = document.getElementById("secretButton");
+  let extrasMode = false;
+  let secretSequence = [];
+  const correctSequence = ["F", "A", "G", "C"];
 
-    let secretSequence = [];
-    const correctSequence = ["F", "A", "G", "C"];
-
-    secretButton.addEventListener("click", () => {
+  secretButton.addEventListener("click", () => {
     extrasMode = !extrasMode;
 
-      if (extrasMode) {
-        secretButton.textContent = "Extras: ON";
-        console.log("Secret mode activated!");
-      } else {
-        secretButton.textContent = "Extras";
-        console.log("Secret mode deactivated!");
-      }
-    });
-    const keys = document.querySelectorAll(".key");
-    let mouseDown = false;
+    if (extrasMode) {
+      secretButton.textContent = "Extras: ON";
+      console.log("Secret mode activated!");
+    } else {
+      secretButton.textContent = "Extras";
+      secretSequence = [];
+      console.log("Secret mode deactivated!");
+    }
+  });
+
+  const keys = document.querySelectorAll(".key");
+  let mouseDown = false;
 
     const sounds = {
       C: new Audio("sounds/334538__teddy_frost__c4.wav"),
