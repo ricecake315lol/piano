@@ -40,6 +40,11 @@
       background: #ddd;
       transform: translateY(5px);
     }
+
+    .key.pressed{
+      background: #ddd;
+      transform: translateY(5px);
+    }
   </style>
 </head>
 
@@ -56,6 +61,23 @@
     <div class = "key">A</div>
     <div class = "key">B</div>
   </div>
-  
+
+  <script>
+    const keys = document.querySelectorAll(".key");
+
+    keys.forEach(key => {
+      key.addEventListener("mousedown",() => {
+        key.classList.add("pressed");
+      });
+
+      key.addEventListener("mouseup",() => {
+        key.classList.remove("pressed");
+      });
+
+      key.addEventListener("mouseleave",() => {
+        key.classList.remove("pressed");
+      });
+    });
+  </script>
 </body>
 </html>
