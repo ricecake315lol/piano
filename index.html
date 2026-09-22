@@ -2,10 +2,58 @@
 <html>
 <head>
   </title>Piano Tiles</title>
+
+  <style>
+    body{
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    h1{
+      margin-top: 40px;
+    }
+
+    .piano{
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .key{
+      width: 60px;
+      height: 220px;
+      background: white;
+      border: 2px solid black;
+      border-radius: 0 0 8px 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 15px;
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    .key.active{
+      background: #ddd;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Welcome to Piano Tiles!</h1>
   <p>Have fun playing the piano online!</p>
+
+  <div class="piano">
+    <div class = "key">C</div>
+    <div class = "key">D</div>
+    <div class = "key">E</div>
+    <div class = "key">F</div>
+    <div class = "key">G</div>
+    <div class = "key">A</div>
+    <div class = "key">B</div>
+  </div>
+  
 </body>
 </html>
