@@ -103,6 +103,9 @@
     const secretButton = document.getElementById("secretButton");
     let extrasMode = false;
 
+    let secretSequence = [];
+    const correctSequence = ["F", "A", "G", "C"];
+
     secretButton.addEventListener("click", () => {
     extrasMode = !extrasMode;
 
@@ -139,14 +142,32 @@
       C5: new Audio("sounds/334537__teddy_frost__c5.wav")
     };
 
-    function playNote(key) {
-      const sound = sounds[key.textContent.trim()];
+  function playNote(key) {
+    const note = key.textContent.trim();
+    const sound = sounds[note];
 
-      if (sound) {
-        sound.currentTime = 0;
-        sound.play();
-      }
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play();
+  }
+
+  // Secret sequence
+  if (extrasMode) {
+    secretSequence.push(note);
+
+    // Keep only the last 4 notes
+    if (secretSequence.length > correctSequence.length) {
+      secretSequence.shift();
     }
+
+    // Check if the sequence is correct
+    if (secretSequence.join(",") === correctSequence.join(",")) {
+      console.log("SECRET UNLOCKED!");
+      
+      // This is where we'll send the player to the games page later
+    }
+  }
+}
 
     document.addEventListener("mousedown", () => {
       mouseDown = true;
