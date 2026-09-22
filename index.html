@@ -58,18 +58,49 @@
     <div class="key">B</div>
   </div>
 
-  <script>
-const keys = document.querySelectorAll(".key");
+<script>
+    const keys = document.querySelectorAll(".key");
+    let mouseDown = false;
 
-keys.forEach(key => {
-    key.addEventListener("mousedown", () => {
-        key.classList.add("pressed");
+    document.addEventListener("mousedown", () => {
+        mouseDown = true;
     });
 
-    key.addEventListener("mouseup", () => {
-        key.classList.remove("pressed");
+    document.addEventListener("mouseup", () => {
+        mouseDown = false;
+
+        keys.forEach(key => {
+            key.classList.remove("pressed");
+        });
     });
-});
+
+    keys.forEach(key => {
+
+        // Normal click
+        key.addEventListener("mousedown", () => {
+            key.classList.add("pressed");
+        });
+
+        // Drag across keys
+        key.addEventListener("mouseenter", () => {
+            if (mouseDown) {
+                key.classList.add("pressed");
+            }
+        });
+
+        // Release while over a key
+        key.addEventListener("mouseup", () => {
+            key.classList.remove("pressed");
+        });
+
+        // Remove the effect when leaving a key
+        key.addEventListener("mouseleave", () => {
+            if (!mouseDown) {
+                key.classList.remove("pressed");
+            }
+        });
+
+    });
 </script>
 
 </body>
