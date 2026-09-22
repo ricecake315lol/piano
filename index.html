@@ -62,15 +62,15 @@
     const keys = document.querySelectorAll(".key");
     let mouseDown = false;
 
-    const sounds = {
-        C: new Audio("sounds/C.mp3"),
-        D: new Audio("sounds/D.mp3"),
-        E: new Audio("sounds/E.mp3"),
-        F: new Audio("sounds/F.mp3"),
-        G: new Audio("sounds/G.mp3"),
-        A: new Audio("sounds/A.mp3"),
-        B: new Audio("sounds/B.mp3")
-    };
+const sounds = {
+    C: new Audio("sounds/334538__teddy_frost__c4.wav"),
+    D: new Audio("sounds/334536__teddy_frost__piano-normal-d4.wav"),
+    E: new Audio("sounds/334542__teddy_frost__e4.wav"),
+    F: new Audio("sounds/334541__teddy_frost__f4.wav"),
+    G: new Audio("sounds/334540__teddy_frost__g4.wav"),
+    A: new Audio("sounds/334534__teddy_frost__piano-a4-sound.wav"),
+    B: new Audio("sounds/334539__teddy_frost__b4.wav")
+};
 
     function playNote(key) {
         const sound = sounds[key.textContent.trim()];
