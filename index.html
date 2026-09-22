@@ -143,29 +143,24 @@
       C5: new Audio("sounds/334537__teddy_frost__c5.wav")
     };
 
-  function playNote(key) {
-    const note = key.textContent.trim();
-    const sound = sounds[note];
+function playNote(key) {
+  const note = key.textContent.trim();
+  const sound = sounds[note];
 
   if (sound) {
     sound.currentTime = 0;
     sound.play();
   }
 
-  // Secret sequence
   if (extrasMode) {
     secretSequence.push(note);
 
-    // Keep only the last 4 notes
-    if (secretSequence.length > correctSequence.length) {
+    if (secretSequence.length > 4) {
       secretSequence.shift();
     }
 
-    // Check if the sequence is correct
-    if (secretSequence.join(",") === correctSequence.join(",")) {
-      console.log("SECRET UNLOCKED!");
-      
-      // This is where we'll send the player to the games page later
+    if (secretSequence.join(",") === "F,A,G,C") {
+      window.location.href = "extras.html";
     }
   }
 }
