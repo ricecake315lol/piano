@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,21 +23,33 @@
       font-size: 18px;
     }
 
+    .games {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 50px auto;
+      max-width: 900px;
+    }
+
     .game {
-      width: 900px;
-      max-width: 90%;
-      height: 650px;
-      margin: 40px auto;
+      width: 220px;
+      height: 140px;
       background: #292544;
       border: 2px solid #4b4375;
       border-radius: 15px;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .game:hover {
+      background: #37315c;
+      transform: translateY(-5px);
     }
   </style>
 </head>
@@ -49,13 +60,25 @@
 
   <p>You found the secret page.</p>
 
-  <div class="game">
-    <iframe
-      src="https://math.geet.in.net/get/among-us/game.html"
-      allowfullscreen>
-    </iframe>
+  <div class="games">
+
+    <a class="game" href="amongus.html">
+      Among Us
+    </a>
+
+    <a class="game" href="#">
+      Game 2
+    </a>
+
+    <a class="game" href="#">
+      Game 3
+    </a>
+
+    <a class="game" href="#">
+      Game 4
+    </a>
+
   </div>
 
 </body>
 </html>
-```
