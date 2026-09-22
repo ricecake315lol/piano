@@ -59,39 +59,18 @@
   </div>
 
   <script>
-    const keys = document.querySelectorAll(".key");
-    let mouseDown = false;
+const keys = document.querySelectorAll(".key");
 
-    document.addEventListener("mousedown", () => {
-      mouseDown = true;
-    });
-
-    document.addEventListener("mouseup", () => {
-      mouseDown = false;
-    });
-
-    keys.forEach(key => {
-
-      key.addEventListener("mousedown", () => {
+keys.forEach(key => {
+    key.addEventListener("mousedown", () => {
         key.classList.add("pressed");
-      });
-
-      key.addEventListener("mouseenter", () => {
-        if (mouseDown) {
-          key.classList.add("pressed");
-        }
-      });
-
-      key.addEventListener("mouseup", () => {
-        key.classList.remove("pressed");
-      });
-
-      key.addEventListener("mouseleave", () => {
-        key.classList.remove("pressed");
-      });
-
     });
-  </script>
+
+    key.addEventListener("mouseup", () => {
+        key.classList.remove("pressed");
+    });
+});
+</script>
 
 </body>
 </html>
