@@ -74,7 +74,7 @@
 
   <h1>Welcome to Piano Tiles!</h1>
   <p>Have fun playing the piano online!</p>
-  
+
   <button id="secretButton">Extras</button>
 
   <div class="piano">
@@ -99,28 +99,30 @@
     <div class="key white">C5</div>
   </div>
 
-<script>
-  const secretButton = document.getElementById("secretButton");
-  let extrasMode = false;
-  let secretSequence = [];
-  const correctSequence = ["F", "A", "G", "C"];
+  <script>
+    const secretButton = document.getElementById("secretButton");
+    let extrasMode = false;
+    let secretSequence = [];
+    const correctSequence = ["F", "A", "G", "C"];
 
-  secretButton.addEventListener("click", () => {
-    extrasMode = !extrasMode;
+    // Extras button
+    secretButton.addEventListener("click", () => {
+      extrasMode = !extrasMode;
 
-    if (extrasMode) {
-      secretButton.textContent = "Extras: ON";
-      console.log("Secret mode activated!");
-    } else {
-      secretButton.textContent = "Extras";
-      secretSequence = [];
-      console.log("Secret mode deactivated!");
-    }
-  });
+      if (extrasMode) {
+        secretButton.textContent = "Extras: ON";
+        console.log("Secret mode activated!");
+      } else {
+        secretButton.textContent = "Extras";
+        secretSequence = [];
+        console.log("Secret mode deactivated!");
+      }
+    });
 
-  const keys = document.querySelectorAll(".key");
-  let mouseDown = false;
+    const keys = document.querySelectorAll(".key");
+    let mouseDown = false;
 
+    // Piano sounds
     const sounds = {
       C: new Audio("sounds/334538__teddy_frost__c4.wav"),
       "C#": new Audio("sounds/608990__smstrahan__csharp.mp3"),
@@ -143,32 +145,38 @@
       C5: new Audio("sounds/334537__teddy_frost__c5.wav")
     };
 
-function playNote(key) {
-  const note = key.textContent.trim();
-  const sound = sounds[note];
+    // Play piano note
+    function playNote(key) {
+      const note = key.textContent.trim();
+      const sound = sounds[note];
 
-  if (sound) {
-    sound.currentTime = 0;
-    sound.play();
-  }
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
 
-  if (extrasMode) {
-    secretSequence.push(note);
+      // Check secret sequence
+      if (extrasMode) {
+        secretSequence.push(note);
 
-    if (secretSequence.length > 4) {
-      secretSequence.shift();
+        // Keep only the last 4 notes
+        if (secretSequence.length > correctSequence.length) {
+          secretSequence.shift();
+        }
+
+        // Check for F → A → G → C
+        if (secretSequence.join(",") === correctSequence.join(",")) {
+          window.location.href = "extras.html";
+        }
+      }
     }
 
-    if (secretSequence.join(",") === "F,A,G,C") {
-      window.location.href = "extras.html";
-    }
-  }
-}
-
+    // Mouse pressed
     document.addEventListener("mousedown", () => {
       mouseDown = true;
     });
 
+    // Mouse released
     document.addEventListener("mouseup", () => {
       mouseDown = false;
 
@@ -198,7 +206,7 @@ function playNote(key) {
         key.classList.remove("pressed");
       });
 
-      // Remove the effect when leaving a key
+      // Remove effect when leaving a key
       key.addEventListener("mouseleave", () => {
         if (!mouseDown) {
           key.classList.remove("pressed");
