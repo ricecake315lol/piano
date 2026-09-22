@@ -35,7 +35,12 @@
       user-select: none;
       transition: transform 0.08s ease, background 0.08s ease;
     }
-    
+
+    .key.pressed {
+      background: #ddd;
+      transform: translateY(5px);
+    }
+
     .white {
       width: 60px;
       height: 220px;
@@ -56,11 +61,6 @@
       border-radius: 0 0 6px 6px;
       padding-bottom: 15px;
     }
-    
-    .key.pressed {
-      background: #ddd;
-      transform: translateY(5px);
-    }
   </style>
 </head>
 
@@ -69,7 +69,7 @@
   <h1>Welcome to Piano Tiles!</h1>
   <p>Have fun playing the piano online!</p>
 
-<div class="piano">
+  <div class="piano">
     <div class="key white">C</div>
     <div class="key black">C#</div>
 
@@ -88,80 +88,87 @@
     <div class="key black">A#</div>
 
     <div class="key white">B</div>
-</div>
+    <div class="key white">C5</div>
+  </div>
 
-<script>
+  <script>
     const keys = document.querySelectorAll(".key");
     let mouseDown = false;
 
-const sounds = {
-    C: new Audio("sounds/334538__teddy_frost__c4.wav"),
-    "C#": new Audio("sounds/608990__smstrahan__csharp.mp3"),
+    const sounds = {
+      C: new Audio("sounds/334538__teddy_frost__c4.wav"),
+      "C#": new Audio("sounds/608990__smstrahan__csharp.mp3"),
 
-    D: new Audio("sounds/334536__teddy_frost__piano-normal-d4.wav"),
-    "D#": new Audio("sounds/608989__smstrahan__dsharp.mp3"),
+      D: new Audio("sounds/334536__teddy_frost__piano-normal-d4.wav"),
+      "D#": new Audio("sounds/608989__smstrahan__dsharp.mp3"),
 
-    E: new Audio("sounds/334542__teddy_frost__e4.wav"),
+      E: new Audio("sounds/334542__teddy_frost__e4.wav"),
 
-    F: new Audio("sounds/334541__teddy_frost__f4.wav"),
-    "F#": new Audio("sounds/608988__smstrahan__fsharp.mp3"),
+      F: new Audio("sounds/334541__teddy_frost__f4.wav"),
+      "F#": new Audio("sounds/608988__smstrahan__fsharp.mp3"),
 
-    G: new Audio("sounds/334540__teddy_frost__g4.wav"),
-    "G#": new Audio("sounds/608992__smstrahan__gsharp.mp3"),
+      G: new Audio("sounds/334540__teddy_frost__g4.wav"),
+      "G#": new Audio("sounds/608992__smstrahan__gsharp.mp3"),
 
-    A: new Audio("sounds/334534__teddy_frost__piano-a4-sound.wav"),
-    "A#": new Audio("sounds/608991__smstrahan__asharp.mp3"),
+      A: new Audio("sounds/334534__teddy_frost__piano-a4-sound.wav"),
+      "A#": new Audio("sounds/608991__smstrahan__asharp.mp3"),
 
-    B: new Audio("sounds/334539__teddy_frost__b4.wav")
-};
+      B: new Audio("sounds/334539__teddy_frost__b4.wav"),
+      C5: new Audio("sounds/334537__teddy_frost__c5.wav")
+    };
 
     function playNote(key) {
-        const sound = sounds[key.textContent.trim()];
+      const sound = sounds[key.textContent.trim()];
 
-        if (sound) {
-            sound.currentTime = 0;
-            sound.play();
-        }
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
     }
 
     document.addEventListener("mousedown", () => {
-        mouseDown = true;
+      mouseDown = true;
     });
 
     document.addEventListener("mouseup", () => {
-        mouseDown = false;
+      mouseDown = false;
 
-        keys.forEach(key => {
-            key.classList.remove("pressed");
-        });
+      keys.forEach(key => {
+        key.classList.remove("pressed");
+      });
     });
 
     keys.forEach(key => {
 
-        key.addEventListener("mousedown", () => {
-            key.classList.add("pressed");
-            playNote(key);
-        });
+      // Normal click
+      key.addEventListener("mousedown", () => {
+        key.classList.add("pressed");
+        playNote(key);
+      });
 
-        key.addEventListener("mouseenter", () => {
-            if (mouseDown) {
-                key.classList.add("pressed");
-                playNote(key);
-            }
-        });
+      // Drag across keys
+      key.addEventListener("mouseenter", () => {
+        if (mouseDown) {
+          key.classList.add("pressed");
+          playNote(key);
+        }
+      });
 
-        key.addEventListener("mouseup", () => {
-            key.classList.remove("pressed");
-        });
+      // Release while over a key
+      key.addEventListener("mouseup", () => {
+        key.classList.remove("pressed");
+      });
 
-        key.addEventListener("mouseleave", () => {
-            if (!mouseDown) {
-                key.classList.remove("pressed");
-            }
-        });
+      // Remove the effect when leaving a key
+      key.addEventListener("mouseleave", () => {
+        if (!mouseDown) {
+          key.classList.remove("pressed");
+        }
+      });
 
     });
-</script>
+  </script>
 
 </body>
 </html>
+
