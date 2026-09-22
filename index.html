@@ -35,7 +35,28 @@
       user-select: none;
       transition: transform 0.08s ease, background 0.08s ease;
     }
+    
+    .white {
+      width: 60px;
+      height: 220px;
+      background: white;
+      border: 2px solid black;
+      z-index: 1;
+    }
 
+    .black {
+      width: 40px;
+      height: 140px;
+      background: black;
+      color: white;
+      margin-left: -20px;
+      margin-right: -20px;
+      z-index: 2;
+      border: 2px solid black;
+      border-radius: 0 0 6px 6px;
+      padding-bottom: 15px;
+    }
+    
     .key.pressed {
       background: #ddd;
       transform: translateY(5px);
@@ -48,15 +69,26 @@
   <h1>Welcome to Piano Tiles!</h1>
   <p>Have fun playing the piano online!</p>
 
-  <div class="piano">
-    <div class="key">C</div>
-    <div class="key">D</div>
-    <div class="key">E</div>
-    <div class="key">F</div>
-    <div class="key">G</div>
-    <div class="key">A</div>
-    <div class="key">B</div>
-  </div>
+<div class="piano">
+    <div class="key white">C</div>
+    <div class="key black">C#</div>
+
+    <div class="key white">D</div>
+    <div class="key black">D#</div>
+
+    <div class="key white">E</div>
+
+    <div class="key white">F</div>
+    <div class="key black">F#</div>
+
+    <div class="key white">G</div>
+    <div class="key black">G#</div>
+
+    <div class="key white">A</div>
+    <div class="key black">A#</div>
+
+    <div class="key white">B</div>
+</div>
 
 <script>
     const keys = document.querySelectorAll(".key");
