@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,11 +46,19 @@
       text-decoration: none;
       font-size: 20px;
       transition: transform 0.15s ease, background 0.15s ease;
+      overflow: hidden;
     }
 
     .game:hover {
       background: #37315c;
       transform: translateY(-5px);
+    }
+
+    .game img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
     }
   </style>
 </head>
@@ -63,7 +72,10 @@
   <div class="games">
 
     <a class="game" href="amongus.html">
-      Among Us
+      <img
+        src="https://math.geet.in.net/get/among-us/red.png"
+        alt="Among Us"
+      >
     </a>
 
     <a class="game" href="#">
@@ -82,3 +94,4 @@
 
 </body>
 </html>
+```
