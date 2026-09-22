@@ -100,6 +100,20 @@
   </div>
 
   <script>
+    const secretButton = document.getElementById("secretButton");
+    let extrasMode = false;
+
+    secretButton.addEventListener("click", () => {
+    extrasMode = !extrasMode;
+
+      if (extrasMode) {
+        secretButton.textContent = "Extras: ON";
+        console.log("Secret mode activated!");
+      } else {
+        secretButton.textContent = "Extras";
+        console.log("Secret mode deactivated!");
+      }
+    });
     const keys = document.querySelectorAll(".key");
     let mouseDown = false;
 
