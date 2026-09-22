@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,35 +21,24 @@
 
     p {
       color: #bdb9d8;
-    }
-
-    .games {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin: 50px auto;
-      max-width: 900px;
+      font-size: 18px;
     }
 
     .game {
-      width: 220px;
-      height: 140px;
+      width: 900px;
+      max-width: 90%;
+      height: 650px;
+      margin: 40px auto;
       background: #292544;
       border: 2px solid #4b4375;
       border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      font-size: 20px;
-      transition: transform 0.15s ease, background 0.15s ease;
+      overflow: hidden;
     }
 
-    .game:hover {
-      background: #37315c;
-      transform: translateY(-5px);
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
@@ -56,36 +46,16 @@
 <body>
 
   <h1>Extras</h1>
-  <p>Play games here.</p>
 
-  <div class="games">
-
- <div class="games">
+  <p>You found the secret page.</p>
 
   <div class="game">
     <iframe
       src="https://math.geet.in.net/get/among-us/game.html"
-      width="800"
-      height="600"
-      frameborder="0"
       allowfullscreen>
     </iframe>
   </div>
 
-</div>
-    <a class="game" href="#">
-      Game 2
-    </a>
-
-    <a class="game" href="#">
-      Game 3
-    </a>
-
-    <a class="game" href="#">
-      Game 4
-    </a>
-
-  </div>
-
 </body>
 </html>
+```
