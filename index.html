@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  </title>Piano Tiles</title>
+  <title>Piano Tiles</title>
 
   <style>
-    body{
+    body {
       text-align: center;
       font-family: Arial, sans-serif;
       background: #f5f5f5;
     }
 
-    h1{
+    h1 {
       margin-top: 40px;
     }
 
-    .piano{
+    .piano {
       display: flex;
       justify-content: center;
       margin-top: 50px;
     }
 
-    .key{
+    .key {
       width: 60px;
       height: 220px;
       background: white;
@@ -36,12 +36,7 @@
       transition: transform 0.08s ease, background 0.08s ease;
     }
 
-    .key.active{
-      background: #ddd;
-      transform: translateY(5px);
-    }
-
-    .key.pressed{
+    .key.pressed {
       background: #ddd;
       transform: translateY(5px);
     }
@@ -49,24 +44,25 @@
 </head>
 
 <body>
+
   <h1>Welcome to Piano Tiles!</h1>
   <p>Have fun playing the piano online!</p>
 
   <div class="piano">
-    <div class = "key">C</div>
-    <div class = "key">D</div>
-    <div class = "key">E</div>
-    <div class = "key">F</div>
-    <div class = "key">G</div>
-    <div class = "key">A</div>
-    <div class = "key">B</div>
+    <div class="key">C</div>
+    <div class="key">D</div>
+    <div class="key">E</div>
+    <div class="key">F</div>
+    <div class="key">G</div>
+    <div class="key">A</div>
+    <div class="key">B</div>
   </div>
 
   <script>
     const keys = document.querySelectorAll(".key");
     let mouseDown = false;
 
-    document.addEventListener("mousedown",() => {
+    document.addEventListener("mousedown", () => {
       mouseDown = true;
     });
 
@@ -75,25 +71,27 @@
     });
 
     keys.forEach(key => {
-      key.addEventListener("mousedown",() => {
+
+      key.addEventListener("mousedown", () => {
         key.classList.add("pressed");
       });
-      
-      key.addEventListener("mouseenter",()=> {
+
+      key.addEventListener("mouseenter", () => {
         if (mouseDown) {
           key.classList.add("pressed");
+        }
       });
-        
-      key.addEventListener("mouseup",() => {
+
+      key.addEventListener("mouseup", () => {
         key.classList.remove("pressed");
       });
 
-      key.addEventListener("mouseleave",() => {
+      key.addEventListener("mouseleave", () => {
         key.classList.remove("pressed");
       });
-
 
     });
   </script>
+
 </body>
 </html>
